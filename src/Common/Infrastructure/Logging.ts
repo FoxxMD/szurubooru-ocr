@@ -1,6 +1,6 @@
 import {ConsoleTransportOptions} from "winston/lib/winston/transports";
 import {DailyRotateFileTransportOptions} from "winston-daily-rotate-file";
-import {DuplexTransportOptions} from "winston-duplex/dist/DuplexTransport";
+import {DuplexTransportOptions} from "winston-duplex/dist/DuplexTransport.js";
 
 export type LogLevel = "error" | "warn" | "info" | "verbose" | "debug";
 export type LogConsoleOptions =
