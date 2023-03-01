@@ -90,7 +90,7 @@ export const fileOrDirectoryIsWriteable = (location: string) => {
 }
 
 export const projectDir = path.resolve(__dirname, '../../../');
-export const configDir: string = path.resolve(projectDir, './config');
+export const configDir: string = process.env.CONFIG_DIR !== undefined ? path.resolve(process.env.CONFIG_DIR) : path.resolve(projectDir, './config');
 
 
 /**
