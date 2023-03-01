@@ -59,7 +59,7 @@ export const getLogger = (options: LoggerFactoryOptions, name = 'app'): Logger =
             } catch (e: any) {
                 let msg = 'WILL NOT write logs to rotating file due to an error while trying to access the specified logging directory';
                 if(castToBool(process.env.IS_DOCKER) === true) {
-                    msg += `Make sure you have specified user in docker run command! See https://github.com/FoxxMD/context-mod/blob/master/docs/gettingStartedOperator.md#docker-recommended`;
+                    msg += `Make sure you have specified user in docker run command!`;
                 }
                 errors.push(new ErrorWithCause<Error>(msg, {cause: e}));
                 realDir = undefined;
@@ -70,8 +70,8 @@ export const getLogger = (options: LoggerFactoryOptions, name = 'app'): Logger =
         if (realDir !== undefined) {
             const rotateTransport = new winston.transports.DailyRotateFile({
                 createSymlink: true,
-                symlinkName: 'contextBot-current.log',
-                filename: 'contextBot-%DATE%.log',
+                symlinkName: 'ocr-current.log',
+                filename: 'cor-%DATE%.log',
                 datePattern: 'YYYY-MM-DD',
                 maxSize: '5m',
                 dirname: realDir,
