@@ -1,0 +1,8 @@
+szurubooru-ocr:
+  image: foxxmd/szurubooru-ocr
+  container_name: szurubooru-ocr
+  environment:
+    - TZ=Etc/GMT # Specify timezone from TZ Database name found here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    - LOG_LEVEL=debug
+  volumes:
+    - /path_on_host/szurubooru-ocr-config:/config

@@ -17,6 +17,9 @@ RUN \
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# https://github.com/Automattic/node-canvas/issues/2153
+RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
+
 ARG data_dir=/config
 VOLUME $data_dir
 ENV CONFIG_DIR=$data_dir
@@ -48,7 +51,3 @@ RUN npm install --omit=dev \
     && chown abc:abc node_modules \
     && rm -rf node_modules/ts-node \
     && rm -rf node_modules/typescript
-
-ARG webPort=9078
-ENV PORT=$webPort
-EXPOSE $PORT

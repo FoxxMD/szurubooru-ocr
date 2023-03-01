@@ -75,7 +75,7 @@ export const getConfig = async (logger: Logger): Promise<YamlSzuruOcrConfigDocum
             const [foundConfigStr, foundFileFormat] = await readConfigFile(location, {log: logger});
             configStr = foundConfigStr;
             fileConfigFormat = foundFileFormat;
-            logger.info(`Found config file: ${configDir}`);
+            logger.info(`Found config file: ${location}`);
             break;
         } catch (e) {
             if(e.message.includes('No file found')) {

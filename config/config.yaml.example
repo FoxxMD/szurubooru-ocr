@@ -1,0 +1,29 @@
+szuru:
+ token: 'bf572465-0aff-480f-b7fc-626ea6d2b92b' # Found under szurubooru ui -> Account -> Login tokens
+ user: 'MyUserName' # Username of the account token was found under
+ endpoints:
+  back: 'http://192.168.0.100:6666' # Backend (server) endpoint for Szurubooru
+  front: 'http://192.168.0.100:8080' # Frontend (client) endpoint for Szurubooru
+
+ query: # optional -- named tokens to add as parameters to the post search https://github.com/rr-/szurubooru/blob/master/doc/API.md#listing-posts
+   tag: demonslayer
+
+# Behavior 'add' -> only add tags/notes if another with identical contents does not exist
+# Behavior 'overwrite' -> "remove" any existing tags/notes and replace with the ones generated
+# Behavior 'empty' -> only add tags/notes if the Post does not already have any tags/notes
+
+extract:
+  tags:
+    enable: true # add tags based on OCR extracted text
+    behavior: 'add' # One of: 'add'  'overwrite'  'empty'
+  notes:
+    enable: true # add notes based on OCR extracted text
+    behavior: 'empty' # One of: 'add'  'overwrite'  'empty'
+
+workers:
+ ocr: 5 # max number of images to run OCR extraction on, in parallel
+ http: 1 # max number of HTTP calls to make for raw image data, in parallel
+
+confidenceThreshold: 80 # 0-100 -- level of confidence Tesseract.js has of the text accuracy for the entire post image. If confidence is lower than threshold no tags/notes are added.
+
+lastCheckedId: 1234 # optional -- application will stop processing posts if it finds a Post with this ID. Set by the application after finishing processing.
